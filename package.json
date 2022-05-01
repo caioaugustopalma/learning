@@ -1,0 +1,25 @@
+{
+  "name": "learning",
+  "version": "1.0.0",
+  "description": "my learning repository",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caioaugustopalma/learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caioaugustopalma/learning/issues"
+  },
+  "homepage": "https://github.com/caioaugustopalma/learning#readme",
+  "dependencies": {
+    "next": "^12.1.5",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
