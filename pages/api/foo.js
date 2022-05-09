@@ -1,25 +1,46 @@
-class Livro {
-  constructor(tit, ed, auth, pages){
-    this.tit = tit;
-    this.ed = ed;
-    this.auth = auth;
-    this.pages = pages;
-  }
+import {PrismaClient, Prisma, People} from '@prisma/client';
 
-  toString(){
-    return `${ this.tit }, ${ this.ed } ed., ${ this.auth }, ${ this.pages } p.`;
-  }
+const _prisma = new PrismaClient();
+
+function read(table){
+  return _prisma[table].findMany();
 }
 
-function test(request, response){
+async function create(table, obj){
+  return await _prisma[table].create({
+    data: obj
+  })
+}
 
-  let boo = new Livro("cookbook", 7, "PALMA, C. A., ", 314)
-  let arr1 = boo.toString().match(/\D+/g)
-  let arr2 = Array.from(arr1)
-  //let ans = {arr1: arr1, arr2: arr2}
-  //let ans = (arr1[0] === arr2[0])
-  let ans = boo.toString().match(/\d+/g).map( x => { return Number(x) } ).reduce( (y, x) => y + x )
+async function update(table, obj){
+  return await _prisma[table].update({
+    where: {
+      id: obj.id
+    },
+    data: obj
+  })
+}
 
+async function remove(table, obj){
+  return await _prisma[table].delete({
+    where: {
+      id: obj.id
+    }
+  })
+}
+
+
+// async function save(obj){
+//   return await fetch('/api/foo', {
+//     method: 'POST',
+//     body: JSON.stringify(obj)
+//   }).json();
+// }
+
+async function test(request, response){
+  //const x = await remove("people", p[0]);
+  //const ans = await read("people");
+  let ans = new Date().getSeconds()
   response.json(ans)
 }
 
