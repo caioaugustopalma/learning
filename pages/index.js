@@ -6,7 +6,7 @@ function Page( { data } ) {
   </div>
 }
 
-import {PrismaClient, Prisma, People} from '@prisma/client';
+//import {PrismaClient, Prisma, People} from '@prisma/client';
 
 export async function getServerSideProps(context) {
   const _prisma = new PrismaClient();
