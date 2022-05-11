@@ -1,34 +1,3 @@
-// import {PrismaClient, Prisma, People} from '@prisma/client';
-//
-// const _prisma = new PrismaClient();
-//
-// function read(table){
-//   return _prisma[table].findMany();
-// }
-//
-// async function create(table, obj){
-//   return await _prisma[table].create({
-//     data: obj
-//   })
-// }
-//
-// async function update(table, obj){
-//   return await _prisma[table].update({
-//     where: {
-//       id: obj.id
-//     },
-//     data: obj
-//   })
-// }
-//
-// async function remove(table, obj){
-//   return await _prisma[table].delete({
-//     where: {
-//       id: obj.id
-//     }
-//   })
-// }
-
 
 // async function save(obj){
 //   return await fetch('/api/foo', {
@@ -37,11 +6,16 @@
 //   }).json();
 // }
 
+
+import { getAll, create } from '../../@warehouse/generic.js'
+
 async function test(request, response){
-  //const x = await remove("people", p[0]);
-  //const ans = await read("people");
-  let ans = new Date().getSeconds()
+  let usr = await getAll("User");
+  const y = await create("Group", {name:"Dev-"})
+  let ans = await getAll("Group");
+  //let ans = new Date().getSeconds()
   response.json(ans)
+  
 }
 
 export default test

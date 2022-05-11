@@ -10,12 +10,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model People {
 
+model Post {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
-  name String?
-  cpfcnpj String?
-  rg String?
+  content String?
+  author_id Int
+  author User @relation(fields: [author_id], references: [id])
+  group_id Int
+  group Group @relation(fields: [group_id], references: [id])
+}
 
+model User {
+  id Int @id @default(autoincrement())
+  name String?
+  avatar String?
+  username String
+  password String?
+  posts Post[]
+  groups Group[]
+}
+
+model Group {
+  id Int @id @default(autoincrement())
+  name String?
+  avatar String?
+  posts Post[]
+  users User[]
 }
